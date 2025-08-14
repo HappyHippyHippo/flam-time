@@ -2,10 +2,8 @@ module github.com/happyhippyhippo/flam-time
 
 go 1.24.0
 
-replace github.com/happyhippyhippo/flam => ../flam
-
 require (
-	github.com/happyhippyhippo/flam v0.0.0-00010101000000-000000000000
+	github.com/happyhippyhippo/flam v0.1.0
 	go.uber.org/dig v1.19.0
 )
 
