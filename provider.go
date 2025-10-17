@@ -12,21 +12,20 @@ func NewProvider() flam.Provider {
 	return &provider{}
 }
 
-func (provider) Id() string {
+func (*provider) Id() string {
 	return providerId
 }
 
-func (provider) Register(
+func (*provider) Register(
 	container *dig.Container,
 ) error {
-	var e error
-	provide := func(constructor any, opts ...dig.ProvideOption) bool {
-		e := container.Provide(constructor, opts...)
-		return e == nil
+	if container == nil {
+		return newErrNilReference("container")
 	}
 
-	_ = provide(newFactory) &&
-		provide(newFacade)
+	registerer := flam.NewRegisterer()
+	registerer.Queue(newFactory)
+	registerer.Queue(newFacade)
 
-	return e
+	return registerer.Run(container)
 }
