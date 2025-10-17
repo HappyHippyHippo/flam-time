@@ -3,7 +3,7 @@ module github.com/happyhippyhippo/flam-time
 go 1.24.0
 
 require (
-	github.com/happyhippyhippo/flam v0.2.0
+	github.com/happyhippyhippo/flam v0.2.1
 	go.uber.org/dig v1.19.0
 )
 
